@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Issue Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+    <div id="pg-login" class="page active">
+        <div class="lcard">
+            <div class="llogo">
+                <div class="llogo-ico"><svg viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg></div>
+                <span>GitHub Issue Tracker</span>
+            </div>
+            <div class="lh1">Sign In</div>
+            <div class="lsub">Enter your credentials to access the dashboard</div>
+            <div class="lf"><label>Username</label><input type="text" id="lu" placeholder="Enter username" /></div>
+            <div class="lf"><label>Password</label><input type="password" id="lp" placeholder="Enter password" /></div>
+            <button class="btn-login" onclick="doLogin()">Sign In</button>
+            <div class="lerr" id="lerr">Invalid credentials. Please try again.</div>
+            <div class="demo" onclick="fillDemo()">
+                <span style="font-size:18px"></span>
+                <div>
+                    <div class="demo-lbl">Demo Credentials</div>
+                    <div class="demo-cr"><b>admin</b> / <b>admin123</b></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="pg-dash" class="page">
+        <nav>
+            <div class="nbrand">
+                <div class="nbrand-ico"><svg viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg></div>
+                GitHub Issue Tracker
+            </div>
+            <div class="nright">
+                <div class="sbox">
+                    <div class="sico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg></div>
+                    <input type="text" id="si" placeholder="Search issues..." />
+                    <button class="btn-s" onclick="doSearch()">Search</button>
+                </div>
+                <button class="btn-lo" onclick="doLogout()">Logout</button>
+            </div>
+        </nav>
+        <main>
+            <div class="dt">Issues Dashboard</div>
+            <div class="ds" id="ds">Loading...</div>
+            <div class="tcard">
+                <div class="ttop">
+                    <div class="tabs">
+                        <button class="tb active" id="tb-all" onclick="sw('all')">All <span class="tc"
+                                id="ca">0</span></button>
+                        <button class="tb" id="tb-open" onclick="sw('open')">Open <span class="tc"
+                                id="co">0</span></button>
+                        <button class="tb" id="tb-closed" onclick="sw('closed')">Closed <span class="tc"
+                                id="cc">0</span></button>
+                    </div>
+                    <div class="tleg">
+                        <div class="leg">
+                            <div class="ld o"></div>Open Issues
+                        </div>
+                        <div class="leg">
+                            <div class="ld c"></div>Closed Issues
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid" id="grid">
+                <div class="ldr">
+                    <div class="spin"></div>
+                    <p class="ltxt">Fetching issues...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL -->
+    <div class="ov" id="ov">
+        <div class="modal">
+            <div id="mc"></div>
+        </div>
+    </div>
+
+    <script>
+        var issues = [], tab = 'all', loggedIn = false;
+        var BASE = 'https://phi-lab-server.vercel.app/api/v1/lab';
+
+        function show(id) {
+            document.querySelectorAll('.page').forEach(function (p) { p.classList.remove('active') });
+            document.getElementById(id).classList.add('active');
+        }
+        function fillDemo() {
+            document.getElementById('lu').value = 'admin';
+            document.getElementById('lp').value = 'admin123';
+            document.getElementById('lerr').classList.remove('show');
+        }
+        function doLogin() {
+            var u = document.getElementById('lu').value.trim();
+            var p = document.getElementById('lp').value.trim();
+            if (u === 'admin' && p === 'admin123') { loggedIn = true; show('pg-dash'); loadIssues(); }
+            else { document.getElementById('lerr').classList.add('show'); document.getElementById('lp').value = ''; }
+        }
+        function doLogout() {
+            loggedIn = false; issues = []; tab = 'all';
+            document.getElementById('si').value = '';
+            document.querySelectorAll('.tb').forEach(function (b) { b.classList.remove('active') });
+            document.getElementById('tb-all').classList.add('active');
+            show('pg-login');
+        }
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !loggedIn) doLogin();
+            if (e.key === 'Escape') closeModal();
+        });
+        async function apiFetch(url) {
+            try {
+                var r = await fetch(url);
+                if (r.ok) return r.json();
+                throw new Error('fail');
+            } catch (e) {
+                var r2 = await fetch('https://corsproxy.io/?url=' + encodeURIComponent(url));
+                return r2.json();
+            }
+        }
+        async function loadIssues() {
+            setGrid('<div class="ldr"><div class="spin"></div><p class="ltxt">Loading issues...</p></div>');
+            try {
+                var j = await apiFetch(BASE + '/issues');
+                issues = j.data || [];
+                document.getElementById('ca').textContent = issues.length;
+                document.getElementById('co').textContent = issues.filter(function (i) { return i.status === 'open' }).length;
+                document.getElementById('cc').textContent = issues.filter(function (i) { return i.status === 'closed' }).length;
+                renderList(filtered());
+                updateSub();
+            } catch (e) {
+                setGrid('<div class="empty"><p style="color:#ef4444">Failed to load. Check internet connection.</p></div>');
+            }
+        }
+        async function doSearch() {
+            var q = document.getElementById('si').value.trim();
+            if (!q) { loadIssues(); return; }
+            setGrid('<div class="ldr"><div class="spin"></div><p class="ltxt">Searching...</p></div>');
+            try {
+                var j = await apiFetch(BASE + '/issues/search?q=' + encodeURIComponent(q));
+                var res = j.data || [];
+                renderList(res);
+                document.getElementById('ds').textContent = res.length + ' result(s) for "' + q + '"';
+            } catch (e) {
+                setGrid('<div class="empty"><p style="color:#ef4444">Search failed.</p></div>');
+            }
+        }
+        function sw(t) {
+            tab = t;
+            document.getElementById('si').value = '';
+            document.querySelectorAll('.tb').forEach(function (b) { b.classList.remove('active') });
+            document.getElementById('tb-' + t).classList.add('active');
+            renderList(filtered());
+            updateSub();
+        }
+        function filtered() {
+            if (tab === 'all') return issues;
+            return issues.filter(function (i) { return i.status === tab });
+        }
+        function updateSub() {
+            var l = filtered();
+            var name = tab === 'all' ? 'All' : tab.charAt(0).toUpperCase() + tab.slice(1);
+            document.getElementById('ds').textContent = l.length + ' issue' + (l.length !== 1 ? 's' : '') + ' · ' + name;
+        }
+        function setGrid(html) { document.getElementById('grid').innerHTML = html; }
+        function renderList(list) {
+            if (!list || !list.length) {
+                setGrid('<div class="empty"><p style="font-size:36px;margin-bottom:8px">🔍</p><p>No issues found.</p></div>');
+                return;
+            }
+            var html = '';
+            for (var idx = 0; idx < list.length; idx++) { html += buildCard(list[idx], idx); }
+            setGrid(html);
+        }
+        function buildCard(i, idx) {
+            var lblHtml = '';
+            if (i.labels && i.labels.length) {
+                for (var k = 0; k < i.labels.length; k++) { lblHtml += buildLabel(i.labels[k]); }
+                lblHtml = '<div class="clbls">' + lblHtml + '</div>';
+            }
+            var init = (i.author || 'U').substring(0, 2).toUpperCase();
+            var delay = Math.min(idx * 25, 400);
+            return '<div class="card ' + i.status + '" style="animation-delay:' + delay + 'ms" onclick="openModal(' + i.id + ')">'
+                + '<div class="ctop"><span class="cnum">#' + i.id + '</span><span class="sb ' + i.status + '">' + (i.status === 'open' ? '● Open' : '● Closed') + '</span></div>'
+                + '<div class="ctitle">' + esc(i.title) + '</div>'
+                + '<div class="cdesc">' + esc(i.description) + '</div>'
+                + lblHtml
+                + '<div class="cinfo">'
+                + '<div class="cr"><span class="crk">Priority</span><span class="pr pr-' + i.priority + '">' + i.priority + '</span></div>'
+                + '<div class="cr"><span class="crk">Author</span>' + esc(i.author) + '</div>'
+                + '<div class="cr"><span class="crk">Category</span><span class="sb ' + i.status + '" style="font-size:10px">' + i.status + '</span></div>'
+                + '</div>'
+                + '<div class="cfoot">'
+                + '<div class="cauth"><div class="ava">' + init + '</div>' + esc(i.author) + '</div>'
+                + '<span class="cdate">' + fmtDate(i.createdAt) + '</span>'
+                + '</div>'
+                + '</div>';
+        }
+        function buildLabel(l) {
+            var lc = l.toLowerCase();
+            var cls = 'lb-ot';
+            if (lc.includes('bug')) cls = 'lb-bug';
+            else if (lc.includes('enhancement')) cls = 'lb-en';
+            else if (lc.includes('documentation')) cls = 'lb-doc';
+            else if (lc.includes('good first')) cls = 'lb-gd';
+            else if (lc.includes('help')) cls = 'lb-hp';
+            return '<span class="lb ' + cls + '">' + esc(l) + '</span>';
+        }
+        async function openModal(id) {
+            document.getElementById('ov').classList.add('show');
+            document.getElementById('mc').innerHTML = '<div class="ldr"><div class="spin"></div></div>';
+            try {
+                var j = await apiFetch(BASE + '/issue/' + id);
+                var i = j.data;
+                var lblHtml = '';
+                if (i.labels && i.labels.length) {
+                    for (var k = 0; k < i.labels.length; k++) { lblHtml += buildLabel(i.labels[k]); }
+                    lblHtml = '<div class="mlbs">' + lblHtml + '</div>';
+                }
+                document.getElementById('mc').innerHTML =
+                    '<div class="mh">'
+                    + '<div class="mr1">'
+                    + '<div class="mbd"><span class="ms ' + i.status + '">' + (i.status === 'open' ? '● Opened' : '● Closed') + '</span>'
+                    + '<span class="mm">Opened by <b>' + esc(i.author) + '</b> · ' + fmtDate(i.createdAt) + '</span></div>'
+                    + '<button class="mcl" onclick="closeModal()">✕</button>'
+                    + '</div>'
+                    + lblHtml
+                    + '<div class="mti">' + esc(i.title) + '</div>'
+                    + '</div>'
+                    + '<div class="mb">'
+                    + '<div class="mdc">' + esc(i.description) + '</div>'
+                    + '<div class="mg">'
+                    + '<div class="mf"><div class="mfl">Assignee</div><div class="mfv">' + (i.assignee ? esc(i.assignee) : '—') + '</div></div>'
+                    + '<div class="mf"><div class="mfl">Priority</div><div class="mfv"><span class="pr pr-' + i.priority + '">' + i.priority + '</span></div></div>'
+                    + '<div class="mf"><div class="mfl">Author</div><div class="mfv">' + esc(i.author) + '</div></div>'
+                    + '<div class="mf"><div class="mfl">Status</div><div class="mfv"><span class="sb ' + i.status + '">' + (i.status === 'open' ? '● Open' : '● Closed') + '</span></div></div>'
+                    + '<div class="mf"><div class="mfl">Created</div><div class="mfv">' + fmtDate(i.createdAt) + '</div></div>'
+                    + '<div class="mf"><div class="mfl">Updated</div><div class="mfv">' + fmtDate(i.updatedAt) + '</div></div>'
+                    + '</div></div>';
+            } catch (e) {
+                document.getElementById('mc').innerHTML = '<p style="padding:30px;text-align:center;color:#ef4444">Failed to load.</p>';
+            }
+        }
+        function closeModal() { document.getElementById('ov').classList.remove('show'); }
+        document.getElementById('ov').addEventListener('click', function (e) {
+            if (e.target === document.getElementById('ov')) closeModal();
+        });
+        function fmtDate(s) {
+            if (!s) return '—';
+            return new Date(s).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+        function esc(s) {
+            return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+        document.getElementById('si').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') doSearch();
+            if (e.key === 'Escape') { this.value = ''; loadIssues(); }
+        });
+    </script>
+</body> 
+
+</html>

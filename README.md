@@ -1,128 +1,26 @@
-# 🌟 Welcome To (সহজ সরল সিম্পল) Assignment - 5
 
-# **📅 Deadline For 60 marks:** 9th March, 2026 (11:59 pm ⏱️)  
-#  📅 No Deadline For 50 marks  
-# **📅 Deadline For 30 marks:** Any time after 9th March.
+​README Questions & Answers
+​১. var, let, এবং const.এর মধ্যে পার্থক্য কী?
+​var: এটি ফাংশন স্কোপড। একই নামে একাধিকবার ভেরিয়েবল ডিক্লেয়ার করা যায় এবং এর মান পরিবর্তন করা যায়। এটি হোস্টিং (Hoisting) সাপোর্ট করে।
+​let: এটি ব্লক স্কোপড। একই স্কোপে একই নামে দ্বিতীয়বার ডিক্লেয়ার করা যায় না, তবে মান পরিবর্তন করা যায়।
+​const: এটিও ব্লক স্কোপড। একবার মান অ্যাসাইন করলে তা আর পরিবর্তন করা যায় না এটি রিডিক্লেয়ারও করা যায় না।
 
----
-
-# Assignment-05: GitHub Issues Tracker
-
-
-### **API Endpoints:**
-###  **All Issues:** 
-  - https://phi-lab-server.vercel.app/api/v1/lab/issues 
+​২. স্প্রেড অপারেটর (Spread Operator) কী এবং এটি কেন ব্যবহার করা হয়?
+​স্প্রেড অপারেটরকে তিনটি ডট (...) দিয়ে প্রকাশ করা হয়। এটি কোনো ইটারেবল (যেমন: অ্যারে বা অবজেক্ট) থেকে ডেটা বের করে অন্য কোথাও কপি বা ব্যবহার করতে সাহায্য করে। এটি মূলত অ্যারে কম্বাইন করতে বা অবজেক্ট ক্লোন করতে ব্যবহার করা হয়।
+​উদাহরণ: const newArray = [...oldArray, 4, 5];
 
 
-###  **Single Issue:**
-   - https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}
-
-   - Example: https://phi-lab-server.vercel.app/api/v1/lab/issue/33
-
-
-###  **Search Issue:** https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q={searchText}
-
-   - Example:  https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
+​৩. map, filter, এবং forEach.এর মধ্যে পার্থক্য কী?
+​forEach: এটি অ্যারের প্রতিটি উপাদানের ওপর কাজ করে কিন্তু নতুন কোনো অ্যারে রিটার্ন করে না।
+​map: এটি প্রতিটি উপাদানের ওপর কাজ করে এবং একটি নতুন অ্যারে রিটার্ন করে।
+​filter: এটি নির্দিষ্ট শর্ত পূরণ করে এমন উপাদানগুলো নিয়ে একটি নতুন ফিল্টার করা অ্যারে রিটার্ন করে।
 
 
----
-
-## 📝 Main Requirements
-
-## 🎨 Design Part
-
-## Login Page
-- Create a login page containing a logo, title, and sub-title
-- Below that, there will be 2 inputs, a sign-in button, and a demo credential to sign in. Follow the Figma for this page 
-- Styled as per Figma
-
-## Main Page: 
-
-### Navbar: 
-
-- Navbar with website logo/name on the left
-- Search input and button on the right
-
-### Tab Section like Figma: 
-
-- 3 tab ( All, Open, Closed) at the top of this section.(**All**, **Open**, **Closed**)
-
-- Below the tab, there will be an icon, the issue count, some text on the left, and an open and closed marker on the right
-
-- Responsiveness: The website should be responsive for mobile devices. It is totally up to you. 
+​৪. অ্যারো ফাংশন Arrow Function কী এবং এটি সাধারণ ফাংশন থেকে কীভাবে আলাদা?
+​অ্যারো ফাংশন হলো জাভাস্ক্রিপ্ট ফাংশন লেখার একটি সংক্ষিপ্ত আধুনিক পদ্ধতি () => {}।
+​পার্থক্য: অ্যারো ফাংশনের নিজস্ব this কন্টেক্সট নেই, এটি তার বাইরের স্কোপ থেকে this গ্রহণ করে। এছাড়া এটি ডিক্লেয়ার করার আগে কল করা যায় না।
 
 
---- 
 
-
-## ⚙️ Functionalities
-- In login page, there will be default admin credentials (username, password). You need to sign in using these credentials.
-
-- Load all issues and display as per Figma
-
-- On clicking on an open or closed tab, it will load the issues data of the related tab and show it in a display-like card in a 4-column layout like Figma. By default, it will show all data 
-
-- Each card shows:
-  - Title
-  - Description
-  - Status 
-  - Author
-  - Priority
-  - Label
-  - CreatedAt
-- Clicking on an issue  card will open a modal and show all the information about that Issue. 
-
-### 🚀 Challenges
-
-
-- Show the card Top border based on their category(open, closed), open card will have Green Boder, closed card will have a purple border on top. 
-
-- Loading spinner on data load
-
-- Show active button on changing category names
-
-- Implement Search Functionality and 8 meaningful github commit.  
-
-- Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
-    - 1️⃣ What is the difference between var, let, and const?
-    - 2️⃣ What is the spread operator (...)?
-    - 3️⃣ What is the difference between map(), filter(), and forEach()?
-    - 4️⃣ What is an arrow function?
-    - 5️⃣ What are template literals?
-
-
----
-
-## 🛠️ Technology Stack
-
-- **HTML**
-- **CSS** (Vanilla/Tailwind/DaisyUI)
-- **JavaScript** (Vanilla)
-
----
-
-## 🔑 Demo Credentials
-
-```text
-Username: admin
-Password: admin123
-```
-
-
----
-
-### Optional: 
- - No need to show status: Open, Closed styles On modals. 
- - No Need to show icon on labels 
- - No need to apply styles on Priority 
---- 
-
-
-## 📤 What to submit
-
-- **GitHub Repository Link:**
-- **Live Site Link:**
-
----
-
-
+​৫. টেমপ্লেট লিটারেলস (Template Literals) কী?
+​টেমপ্লেট লিটারেলস হলো স্ট্রিং লেখার একটি আধুনিক উপায় যা ব্যাকটিক (`) চিহ্নের মাধ্যমে লেখা হয়। এর সুবিধা হলো এতে সহজেই মাল্টি-লাইন স্ট্রিং লেখা যায় এবং ${variable} সিনট্যাক্স ব্যবহার করে স্ট্রিংয়ের ভেতরে সরাসরি ভেরিয়েবল ইনজেক্ট করা যায়।

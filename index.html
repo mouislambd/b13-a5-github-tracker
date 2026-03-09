@@ -48,6 +48,7 @@
                     </svg></div>
                 GitHub Issue Tracker
             </div>
+
             <div class="nright">
                 <div class="sbox">
                     <div class="sico"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
@@ -117,10 +118,10 @@
             document.getElementById('lerr').classList.remove('show');
         }
         function doLogin() {
-            var u = document.getElementById('lu').value.trim();
-            var p = document.getElementById('lp').value.trim();
-            if (u === 'admin' && p === 'admin123') { loggedIn = true; show('pg-dash'); loadIssues(); }
-            else { document.getElementById('lerr').classList.add('show'); document.getElementById('lp').value = ''; }
+                var u = document.getElementById('lu').value.trim();
+                var p = document.getElementById('lp').value.trim();
+                if (u === 'admin' && p === 'admin123') { loggedIn = true; show('pg-dash'); loadIssues(); }
+                else { document.getElementById('lerr').classList.add('show'); document.getElementById('lp').value = ''; }
         }
         function doLogout() {
             loggedIn = false; issues = []; tab = 'all';

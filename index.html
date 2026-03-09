@@ -199,9 +199,12 @@
             setGrid(html);
         }
 
-        
-
-
+         function buildCard(i, idx) {
+                var lblHtml = '';
+                if (i.labels && i.labels.length) {
+                    for (var k = 0; k < i.labels.length; k++) { lblHtml += buildLabel(i.labels[k]); }
+                    lblHtml = '<div class="clbls">' + lblHtml + '</div>';
+                }
 
             var init = (i.author || 'U').substring(0, 2).toUpperCase();
             var delay = Math.min(idx * 25, 400);

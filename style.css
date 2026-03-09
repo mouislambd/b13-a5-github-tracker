@@ -428,6 +428,10 @@
      font-size: 11px;
      color: var(--muted)
  }
+ .leg img{
+    height: 20px ;
+    width: auto;
+ }
 
  .ld {
      width: 9px;
